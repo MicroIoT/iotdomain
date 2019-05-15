@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 设备查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class DevicePageInfo extends PageInfo {
 	private String siteId;
 	private String deviceName;

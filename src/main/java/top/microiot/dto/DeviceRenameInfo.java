@@ -2,6 +2,11 @@ package top.microiot.dto;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 重命名设备输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class DeviceRenameInfo {
 	@NotEmpty(message="device id can't be empty")
 	private String id;

@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 查询页信息类。
+ *
+ * @author 曹新宇
+ */
 public class QueryPageInfo extends QueryInfo {
 	private int pageNumber = 0;
 	private int pageSize = 10;

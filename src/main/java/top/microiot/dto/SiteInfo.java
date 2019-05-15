@@ -4,6 +4,11 @@ import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 场地输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class SiteInfo<T> {
 	@NotEmpty(message="site name can't be empty")
 	private String name;

@@ -4,6 +4,11 @@ import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 修改设备输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class DeviceUpdateInfo<T> {
 	@NotEmpty(message="device id can't be empty")
 	private String id;

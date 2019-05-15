@@ -11,6 +11,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DataValue;
 
+/**
+ * 设备类。
+ *
+ * @author 曹新宇
+ */
 @CompoundIndex(name = "sim_type_idx", def = "{'simNo' : 1, 'deviceType' : 1}", unique = true)
 @Document
 public class Device extends NotifyObject{

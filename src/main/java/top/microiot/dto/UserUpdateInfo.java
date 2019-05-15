@@ -4,6 +4,11 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 修改用户输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class UserUpdateInfo {
 	@NotEmpty(message="userId can't be empty")
 	private String userId;

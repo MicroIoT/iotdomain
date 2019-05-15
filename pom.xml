@@ -6,7 +6,7 @@
 
 	<groupId>top.microiot</groupId>
 	<artifactId>iotdomain</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>iotdomain</name>
@@ -131,7 +131,7 @@
 		<connection>scm:git:https://github.com/MicroIoT/iotdomain.git</connection>
 		<developerConnection>caoxinyu</developerConnection>
 		<url>https://github.com/MicroIoT/iotdomain</url>
-		<tag>iot domain</tag>
+		<tag>MicroIoT domain</tag>
 	</scm>
 
 	<distributionManagement>
@@ -151,7 +151,4 @@
 		<name>MicroIoT</name>
 	</organization>
 	<url>https://github.com/MicroIoT/iotdomain</url>
-	<issueManagement>
-		<url>https://github.com/reactor/reactor/issues</url>
-	</issueManagement>
 </project>

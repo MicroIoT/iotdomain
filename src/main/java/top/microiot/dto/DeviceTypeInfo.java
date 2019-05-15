@@ -7,6 +7,11 @@ import javax.validation.Valid;
 import top.microiot.domain.attribute.AttTypeInfo;
 import top.microiot.domain.attribute.ClassTypeDeviceInfo;
 
+/**
+ * 设备类型输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class DeviceTypeInfo extends AttTypeInfo {
 	public DeviceTypeInfo() {
 		super();

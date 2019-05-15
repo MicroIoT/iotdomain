@@ -7,6 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * 告警配置类。
+ *
+ * @author 曹新宇
+ */
 @CompoundIndex(name = "user_object_idx", def = "{'user' : 1, 'notifyObject' : 1}", unique = true)
 @Document
 public class Configuration {

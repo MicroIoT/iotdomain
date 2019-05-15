@@ -6,6 +6,11 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 设备输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class DeviceInfo<T> {
 	@NotEmpty(message="device name can't be empty")
 	private String deviceName;

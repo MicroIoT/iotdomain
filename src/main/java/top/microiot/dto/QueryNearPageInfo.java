@@ -2,6 +2,11 @@ package top.microiot.dto;
 
 import org.springframework.data.geo.Metrics;
 
+/**
+ * 地理信息查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class QueryNearPageInfo extends QueryPageInfo {
 	private double x;
 	private double y;

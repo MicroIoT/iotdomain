@@ -9,6 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import top.microiot.domain.attribute.DataValue;
 
+/**
+ * 事件类。
+ *
+ * @author 曹新宇
+ */
 @JsonInclude(Include.NON_NULL)
 @Document
 public class Event extends Notification{

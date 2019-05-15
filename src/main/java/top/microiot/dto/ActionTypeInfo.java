@@ -5,6 +5,11 @@ import javax.validation.constraints.NotEmpty;
 
 import top.microiot.domain.attribute.AttTypeInfo;
 
+/**
+ * 操作类型输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class ActionTypeInfo {
 	@NotEmpty(message="action type name can't be empty")
 	private String name;

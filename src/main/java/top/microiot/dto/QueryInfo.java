@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class QueryInfo {
 	private String filter;
 	private String sort;

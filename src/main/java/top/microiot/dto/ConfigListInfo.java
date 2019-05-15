@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 告警查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class ConfigListInfo {
 	private Boolean top;
 	private Boolean silent;

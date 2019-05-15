@@ -11,6 +11,11 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import top.microiot.domain.attribute.AttributeType;
 
+/**
+ * 发送通知的抽象对象类，通知对象可以是场地，也可以是设备。
+ *
+ * @author 曹新宇
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ 
 	@Type(value = Site.class, name = NotifyObject.SITE), 

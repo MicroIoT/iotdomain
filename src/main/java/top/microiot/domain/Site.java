@@ -11,6 +11,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DataValue;
 
+/**
+ * 场地类。
+ *
+ * @author 曹新宇
+ */
 @CompoundIndex(name = "name_pid_sid_idx", def = "{'name' : 1, 'parent' : 1, 'siteType' : 1}", unique = true)
 @Document
 public class Site extends NotifyObject {

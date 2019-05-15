@@ -10,6 +10,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * 收藏类。
+ *
+ * @author 曹新宇
+ */
 @CompoundIndex(name = "name_type_user_idx", def = "{'name' : 1, 'type' : 1, 'user': 1}", unique = true)
 @Document
 public class Favorite {

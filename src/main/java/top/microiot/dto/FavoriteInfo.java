@@ -6,6 +6,11 @@ import top.microiot.domain.Favorite.Type;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 收藏输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class FavoriteInfo {
 	@NotEmpty(message="favorite name can't be empty")
 	private String name;

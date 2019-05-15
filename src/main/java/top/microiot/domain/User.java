@@ -10,6 +10,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * 系统用户类。
+ *
+ * @author 曹新宇
+ */
 @JsonSerialize(using = UserSerializer.class)
 @Document
 public class User {

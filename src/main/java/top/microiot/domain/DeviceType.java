@@ -9,6 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DeviceAttributeType;
 
+/**
+ * 设备类型类。
+ *
+ * @author 曹新宇
+ */
 @CompoundIndex(name = "name_idx", def = "{'name' : 1}", unique = true)
 @Document
 public class DeviceType {

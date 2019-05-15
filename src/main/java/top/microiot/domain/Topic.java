@@ -1,5 +1,10 @@
 package top.microiot.domain;
 
+/**
+ * websocket订阅主题类。
+ *
+ * @author 曹新宇
+ */
 public class Topic {
 	public static final String TOPIC_ALARM = "/topic/alarm.";
 	public static final String TOPIC_RESULT = "/topic/result.";

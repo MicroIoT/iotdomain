@@ -4,6 +4,11 @@ import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 修改场地输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class SiteUpdateInfo<T> {
 	@NotEmpty(message="site id can't be empty")
 	private String id;

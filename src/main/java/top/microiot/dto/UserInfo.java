@@ -7,6 +7,11 @@ import javax.validation.constraints.NotEmpty;
 
 import top.microiot.domain.Role;
 
+/**
+ * 系统用户输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class UserInfo {
 	@NotEmpty(message="username can't be empty")
 	private String username;

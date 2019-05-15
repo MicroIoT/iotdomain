@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 事件查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class EventPageInfo extends NotificationPageInfo {
 	private String deviceId;
 	private String attribute;

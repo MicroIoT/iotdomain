@@ -2,6 +2,11 @@ package top.microiot.dto;
 
 import top.microiot.domain.Favorite.Type;
 
+/**
+ * 收藏查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class FavoritePageInfo extends PageInfo {
 	private String name;
 	private Type type;

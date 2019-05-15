@@ -2,6 +2,11 @@ package top.microiot.dto;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 重命名场地输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class SiteRenameInfo {
 	@NotEmpty(message="site id can't be empty")
 	private String id;

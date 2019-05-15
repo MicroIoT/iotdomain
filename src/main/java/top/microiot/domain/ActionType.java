@@ -7,6 +7,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import top.microiot.domain.attribute.AttributeType;
 
+/**
+ * 操作类型类。
+ *
+ * @author 曹新宇
+ */
 public class ActionType {
 	private Map<String, AttributeType> request = null;
 	private Map<String, AttributeType> response = null;

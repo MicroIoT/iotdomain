@@ -1,5 +1,10 @@
 package top.microiot.dto;
 
+/**
+ * 场地查询条件类。
+ *
+ * @author 曹新宇
+ */
 public class SitePageInfo extends PageInfo {
 	private String parentId;
 	private String siteName;

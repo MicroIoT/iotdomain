@@ -4,6 +4,11 @@ import javax.validation.constraints.NotNull;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 告警配置输入信息类。
+ *
+ * @author 曹新宇
+ */
 public class ConfigInfo {
 	@NotEmpty(message="objectId can't be empty")
 	private String notifyObjectId;
