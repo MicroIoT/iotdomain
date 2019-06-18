@@ -152,4 +152,17 @@ public class User {
 	public void setShowPassword(boolean showPassword) {
 		this.showPassword = showPassword;
 	}
+
+	@Override
+	public int hashCode() {
+		return username.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof User && ((User)obj).getUsername().equals(username))
+			return true;
+		else
+			return false;
+	}
 }
