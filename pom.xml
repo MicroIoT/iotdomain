@@ -6,7 +6,7 @@
 
 	<groupId>top.microiot</groupId>
 	<artifactId>iotdomain</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
 
 	<name>iotdomain</name>
@@ -80,9 +80,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<additionalparam>-Xdoclint:none</additionalparam><!-- 添加这个压制JavaDoc检查 -->
-				</configuration>
 				<executions>
 					<execution>
 						<phase>package</phase>
