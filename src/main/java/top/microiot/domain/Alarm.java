@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import top.microiot.domain.attribute.DataValue;
 
 /**
- * 告警类。
+ * 告警类。告警是设备在特定情况下上报的特定信息。
  *
  * @author 曹新宇
  */

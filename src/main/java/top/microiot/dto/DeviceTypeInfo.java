@@ -17,11 +17,19 @@ public class DeviceTypeInfo extends AttTypeInfo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public DeviceTypeInfo(ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos, Boolean isGroup) {
+		super(info.getName(), info.getDataType(), info.getDescription(), false, null, info.getAdditional());
+		this.staticAttTypeInfo = staticAttTypeInfo;
+		this.alarmTypeInfos = alarmTypeInfos;
+		this.actionTypeInfos = actionTypeInfos;
+		this.isGroup = isGroup;
+	}
 	public DeviceTypeInfo(ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos) {
 		super(info.getName(), info.getDataType(), info.getDescription(), false, null, info.getAdditional());
 		this.staticAttTypeInfo = staticAttTypeInfo;
 		this.alarmTypeInfos = alarmTypeInfos;
 		this.actionTypeInfos = actionTypeInfos;
+		this.isGroup = false;
 	}
 	@Valid
 	private List<? extends AttTypeInfo> staticAttTypeInfo;
@@ -29,6 +37,7 @@ public class DeviceTypeInfo extends AttTypeInfo {
 	private List<? extends AttTypeInfo> alarmTypeInfos;
 	@Valid
 	private List<ActionTypeInfo> actionTypeInfos;
+	private boolean isGroup;
 	
 	public List<? extends AttTypeInfo> getAlarmTypeInfos() {
 		return alarmTypeInfos;
@@ -47,6 +56,12 @@ public class DeviceTypeInfo extends AttTypeInfo {
 	}
 	public void setStaticAttTypeInfo(List<? extends AttTypeInfo> staticAttTypeInfo) {
 		this.staticAttTypeInfo = staticAttTypeInfo;
+	}
+	public boolean isGroup() {
+		return isGroup;
+	}
+	public void setGroup(boolean isGroup) {
+		this.isGroup = isGroup;
 	}
 	
 }

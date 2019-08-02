@@ -27,6 +27,8 @@ public class Device extends NotifyObject{
 	private Map<String, DataValue> attributes;
 	@DBRef
 	private Site site;
+	@DBRef
+	private Device parent;
 	private User deviceAccount;
 	
 	public Device() {
@@ -41,9 +43,27 @@ public class Device extends NotifyObject{
 		this.deviceType = deviceType;
 		this.attributes = attributes;
 		this.site = site;
+		this.parent = null;
+		this.deviceAccount = deviceAccount;
+	}
+	public Device(String deviceName, String simNo, DeviceType deviceType, Map<String, DataValue> attributes, Site site, Device parent, User deviceAccount) {
+		super();
+		this.deviceName = deviceName;
+		this.simNo = simNo;
+		this.connected = false;
+		this.deviceType = deviceType;
+		this.attributes = attributes;
+		this.site = site;
+		this.parent = parent;
 		this.deviceAccount = deviceAccount;
 	}
 	
+	public Device getParent() {
+		return parent;
+	}
+	public void setParent(Device parent) {
+		this.parent = parent;
+	}
 	public String getSimNo() {
 		return simNo;
 	}

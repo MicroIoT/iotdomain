@@ -25,6 +25,7 @@ public class DeviceType {
 	private Map<String, AttributeType> staticAttDefinition;
 	private Map<String, AttributeType> alarmTypes;
 	private Map<String, ActionType> actionTypes;
+	private boolean isGroup;
 	
 	public DeviceType() {
 		super();
@@ -39,6 +40,18 @@ public class DeviceType {
 		this.staticAttDefinition = staticAttDefinition;
 		this.alarmTypes = alarmTypes;
 		this.actionTypes = actionTypes;
+		this.isGroup = false;
+	}
+
+	public DeviceType(String name, String description, Map<String, DeviceAttributeType> attDefinition, 	Map<String, AttributeType> staticAttDefinition, Map<String, AttributeType> alarmTypes, Map<String, ActionType> actionTypes, boolean isGroup) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.attDefinition = attDefinition;
+		this.staticAttDefinition = staticAttDefinition;
+		this.alarmTypes = alarmTypes;
+		this.actionTypes = actionTypes;
+		this.isGroup = isGroup;
 	}
 
 	public String getId() {
@@ -94,5 +107,13 @@ public class DeviceType {
 
 	public void setActionTypes(Map<String, ActionType> actionTypes) {
 		this.actionTypes = actionTypes;
+	}
+
+	public boolean isGroup() {
+		return isGroup;
+	}
+
+	public void setGroup(boolean isGroup) {
+		this.isGroup = isGroup;
 	}
 }
