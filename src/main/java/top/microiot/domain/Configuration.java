@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * 告警配置类。
+ * 告警配置类。配置告警是否置顶，是否静音。
  *
  * @author 曹新宇
  */
@@ -21,7 +21,7 @@ public class Configuration {
 	@JsonIgnore
 	private User user;
 	@DBRef
-	private NotifyObject notifyObject;
+	private ManagedObject notifyObject;
 	private boolean silent;
 	private boolean top;
 	
@@ -29,7 +29,7 @@ public class Configuration {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Configuration(User user, NotifyObject notifyObject) {
+	public Configuration(User user, ManagedObject notifyObject) {
 		super();
 		this.user = user;
 		this.notifyObject = notifyObject;
@@ -48,10 +48,10 @@ public class Configuration {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public NotifyObject getNotifyObject() {
+	public ManagedObject getNotifyObject() {
 		return notifyObject;
 	}
-	public void setNotifyObject(NotifyObject device) {
+	public void setNotifyObject(ManagedObject device) {
 		this.notifyObject = device;
 	}
 	public boolean isSilent() {

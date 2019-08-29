@@ -3,11 +3,12 @@ package top.microiot.domain;
 import top.microiot.exception.ValueException;
 
 /**
- * 查询对象。
+ * 客户端可查询对象。
  *
  * @author 曹新宇
  */
 public enum IoTObject {
+	domain("domain", "top.microiot.domain.Domain"), 
 	device("device", "top.microiot.domain.Device"), 
 	devicetype("devicetype", "top.microiot.domain.DeviceType"), 
 	site("site", "top.microiot.domain.Site"), 

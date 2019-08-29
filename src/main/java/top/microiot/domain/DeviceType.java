@@ -4,23 +4,26 @@ import java.util.Map;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DeviceAttributeType;
 
 /**
- * 设备类型类。
+ * 设备类型类。是对被管理的设备的抽象。
  *
  * @author 曹新宇
  */
-@CompoundIndex(name = "name_idx", def = "{'name' : 1}", unique = true)
+@CompoundIndex(name = "name_domain_idx", def = "{'name' : 1, 'domain' : 1}", unique = true)
 @Document
 public class DeviceType {
 	@Id
     private String id;
 	private String name;
 	private String description;
+	@DBRef
+	private Domain domain;
 	private Map<String, DeviceAttributeType> attDefinition;
 	private Map<String, AttributeType> staticAttDefinition;
 	private Map<String, AttributeType> alarmTypes;
@@ -32,10 +35,11 @@ public class DeviceType {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DeviceType(String name, String description, Map<String,DeviceAttributeType> attDefinition, Map<String, AttributeType> staticAttDefinition, Map<String, AttributeType> alarmTypes, Map<String, ActionType> actionTypes ) {
+	public DeviceType(String name, String description, Domain domain, Map<String,DeviceAttributeType> attDefinition, Map<String, AttributeType> staticAttDefinition, Map<String, AttributeType> alarmTypes, Map<String, ActionType> actionTypes ) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.domain = domain;
 		this.attDefinition = attDefinition;
 		this.staticAttDefinition = staticAttDefinition;
 		this.alarmTypes = alarmTypes;
@@ -43,10 +47,11 @@ public class DeviceType {
 		this.isGroup = false;
 	}
 
-	public DeviceType(String name, String description, Map<String, DeviceAttributeType> attDefinition, 	Map<String, AttributeType> staticAttDefinition, Map<String, AttributeType> alarmTypes, Map<String, ActionType> actionTypes, boolean isGroup) {
+	public DeviceType(String name, String description, Domain domain, Map<String, DeviceAttributeType> attDefinition, 	Map<String, AttributeType> staticAttDefinition, Map<String, AttributeType> alarmTypes, Map<String, ActionType> actionTypes, boolean isGroup) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.domain = domain;
 		this.attDefinition = attDefinition;
 		this.staticAttDefinition = staticAttDefinition;
 		this.alarmTypes = alarmTypes;
@@ -76,6 +81,14 @@ public class DeviceType {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 
 	public Map<String, DeviceAttributeType> getAttDefinition() {

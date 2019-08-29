@@ -6,42 +6,34 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * 通知抽象类，是告警和事件的父类。
  *
  * @author 曹新宇
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ 
-	@Type(value = Alarm.class, name = Notification.ALARM), 
-	@Type(value = Event.class, name = Notification.EVENT) })
 public abstract class Notification {
-	public static final String ALARM = "Alarm";
-	public static final String EVENT = "Event";
-	
 	public static final String NOTIFY_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
 	@Id
     private String id;
 	@DBRef(lazy=true)
-	private NotifyObject notifyObject;
+	private ManagedObject notifyObject;
+	@DBRef
+	private Domain domain;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = NOTIFY_DATE_FORMAT, locale = "zh", timezone = "GMT+8")
 	private Date reportTime;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = NOTIFY_DATE_FORMAT, locale = "zh", timezone = "GMT+8")
 	private Date receiveTime;
-	private String type;
 	
 	public Notification() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Notification(NotifyObject notifyObject, Date reportTime) {
+	public Notification(ManagedObject notifyObject, Date reportTime) {
 		super();
 		this.notifyObject = notifyObject;
+		this.domain = notifyObject.getDomain();
 		this.reportTime = reportTime;
 		this.receiveTime = new Date();
 	}
@@ -51,10 +43,10 @@ public abstract class Notification {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public NotifyObject getNotifyObject() {
+	public ManagedObject getNotifyObject() {
 		return notifyObject;
 	}
-	public void setNotifyObject(NotifyObject alarmObject) {
+	public void setNotifyObject(ManagedObject alarmObject) {
 		this.notifyObject = alarmObject;
 	}
 	public Date getReportTime() {
@@ -69,11 +61,10 @@ public abstract class Notification {
 	public void setReceiveTime(Date receiveTime) {
 		this.receiveTime = receiveTime;
 	}
-	public String getType() {
-		return type;
+	public Domain getDomain() {
+		return domain;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
-	
 }

@@ -1,9 +1,7 @@
 package top.microiot.dto;
 
-import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -13,43 +11,35 @@ import javax.validation.constraints.NotEmpty;
  */
 public class DeviceInfo<T> {
 	@NotEmpty(message="device name can't be empty")
-	private String deviceName;
-	@NotEmpty(message="simNo can't be empty")
-	private String simNo;
+	private String name;
 	@NotEmpty(message="device type can't be empty")
-	private String type;
-	@Valid
-	private List<DeviceSiteInfo> sites;
+	private String deviceType;
+	@NotEmpty(message="locationId can't be empty")
+	private String locationId;
 	private Map<String, T> attInfos;
 	
-	public String getDeviceName() {
-		return deviceName;
+	public String getName() {
+		return name;
 	}
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getSimNo() {
-		return simNo;
+	public String getDeviceType() {
+		return deviceType;
 	}
-	public void setSimNo(String simNo) {
-		this.simNo = simNo;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public List<DeviceSiteInfo> getSites() {
-		return sites;
-	}
-	public void setSites(List<DeviceSiteInfo> sites) {
-		this.sites = sites;
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
 	}
 	public Map<String, T> getAttInfos() {
 		return attInfos;
 	}
 	public void setAttInfos(Map<String, T> attInfos) {
 		this.attInfos = attInfos;
+	}
+	public String getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
 	}
 }

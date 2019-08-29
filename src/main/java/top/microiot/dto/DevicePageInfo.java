@@ -6,38 +6,45 @@ package top.microiot.dto;
  * @author 曹新宇
  */
 public class DevicePageInfo extends PageInfo {
-	private String siteId;
-	private String deviceName;
-	private String deviceType;
-
+	private String locationId;
+	private String name;
+	private String deviceTypeId;
+	private String domainId;
+	
 	public DevicePageInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getSiteId() {
-		return siteId;
+	public String getLocationId() {
+		return locationId;
 	}
 
-	public void setSiteId(String siteId) {
-		this.siteId = siteId;
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
 	}
 
-	public String getDeviceName() {
-		return deviceName;
+	public String getName() {
+		return name;
 	}
 
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getDeviceType() {
-		return deviceType;
+	public String getDeviceTypeId() {
+		return deviceTypeId;
 	}
 
-	public void setDeviceType(String deviceType) {
-		this.deviceType = deviceType;
+	public void setDeviceTypeId(String deviceTypeId) {
+		this.deviceTypeId = deviceTypeId;
 	}
 
-	
+	public String getDomainId() {
+		return domainId;
+	}
+
+	public void setDomainId(String domainId) {
+		this.domainId = domainId;
+	}
 }

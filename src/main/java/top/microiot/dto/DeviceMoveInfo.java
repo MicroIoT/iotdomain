@@ -10,17 +10,17 @@ import javax.validation.constraints.NotEmpty;
 public class DeviceMoveInfo {
 	@NotEmpty(message="device id can't be empty")
 	private String id;
-	private String siteId;
+	private String locationId;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getSiteId() {
-		return siteId;
+	public String getLocationId() {
+		return locationId;
 	}
-	public void setSiteId(String siteId) {
-		this.siteId = siteId;
+	public void setLocationId(String deviceId) {
+		this.locationId = deviceId;
 	}
 }

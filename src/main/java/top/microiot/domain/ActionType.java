@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import top.microiot.domain.attribute.AttributeType;
 
 /**
- * 操作类型类。
+ * 设备的操作类型。
  *
  * @author 曹新宇
  */

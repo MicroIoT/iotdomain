@@ -4,6 +4,11 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * 当前系统登录的http会话类。
+ *
+ * @author 曹新宇
+ */
 public class HttpSession {
 	private String username;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Notification.NOTIFY_DATE_FORMAT, locale = "zh", timezone = "GMT+8")

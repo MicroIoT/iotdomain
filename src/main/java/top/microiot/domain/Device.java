@@ -2,6 +2,7 @@ package top.microiot.domain;
 
 import java.util.Map;
 
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,46 +17,37 @@ import top.microiot.domain.attribute.DataValue;
  *
  * @author 曹新宇
  */
-@CompoundIndex(name = "sim_type_idx", def = "{'simNo' : 1, 'deviceType' : 1}", unique = true)
+@CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'deviceType' : 1}", unique = true)
 @Document
-public class Device extends NotifyObject{
-	private String deviceName;
-	private String simNo;
+@TypeAlias("device")
+public class Device extends ManagedObject{
+	private String name;
 	private boolean connected;
 	@DBRef
 	private DeviceType deviceType;
 	private Map<String, DataValue> attributes;
 	@DBRef
-	private Site site;
+	private ManagedObject location;
 	@DBRef
 	private Device parent;
+	@DBRef
+	private Domain domain;
 	private User deviceAccount;
 	
 	public Device() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.setType(Type.DEVICE);
 	}
-	public Device(String deviceName, String simNo, DeviceType deviceType, Map<String, DataValue> attributes, Site site, User deviceAccount) {
-		super();
-		this.deviceName = deviceName;
-		this.simNo = simNo;
+	public Device(String name, DeviceType deviceType, Map<String, DataValue> attributes, ManagedObject location, User deviceAccount) {
+		super(Type.DEVICE);
+		this.name = name;
 		this.connected = false;
 		this.deviceType = deviceType;
 		this.attributes = attributes;
-		this.site = site;
+		this.location = location;
 		this.parent = null;
 		this.deviceAccount = deviceAccount;
-	}
-	public Device(String deviceName, String simNo, DeviceType deviceType, Map<String, DataValue> attributes, Site site, Device parent, User deviceAccount) {
-		super();
-		this.deviceName = deviceName;
-		this.simNo = simNo;
-		this.connected = false;
-		this.deviceType = deviceType;
-		this.attributes = attributes;
-		this.site = site;
-		this.parent = parent;
-		this.deviceAccount = deviceAccount;
+		this.domain = location.getMODomain();
 	}
 	
 	public Device getParent() {
@@ -63,12 +55,6 @@ public class Device extends NotifyObject{
 	}
 	public void setParent(Device parent) {
 		this.parent = parent;
-	}
-	public String getSimNo() {
-		return simNo;
-	}
-	public void setSimNo(String simNo) {
-		this.simNo = simNo;
 	}
 	public DeviceType getDeviceType() {
 		return deviceType;
@@ -88,17 +74,17 @@ public class Device extends NotifyObject{
 	public void setDeviceAccount(User deviceAccount) {
 		this.deviceAccount = deviceAccount;
 	}
-	public String getDeviceName() {
-		return deviceName;
+	public String getName() {
+		return name;
 	}
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public Site getSite() {
-		return site;
+	public ManagedObject getLocation() {
+		return location;
 	}
-	public void setSite(Site site) {
-		this.site = site;
+	public void setLocation(ManagedObject location) {
+		this.location = location;
 	}
 	public boolean isConnected() {
 		return connected;
@@ -107,15 +93,20 @@ public class Device extends NotifyObject{
 		this.connected = connected;
 	}
 	public String getString() {
-		return this.getDeviceName() + this.getDeviceType().getName();
+		return this.getName() + this.getDeviceType().getName();
+	}
+	public String getFullString() {
+		return getLocation().getFullString() + getString();
 	}
 	@JsonIgnore
 	@Override
 	public Map<String, AttributeType> getAlarmTypes() {
 		return getDeviceType().getAlarmTypes();
 	}
-	@Override
-	public String getType() {
-		return NotifyObject.DEVICE;
+	public Domain getDomain() {
+		return domain;
+	}
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 }

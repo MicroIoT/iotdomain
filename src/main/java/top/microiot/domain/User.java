@@ -1,5 +1,6 @@
 package top.microiot.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -17,7 +18,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  */
 @JsonSerialize(using = UserSerializer.class)
 @Document
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6703193555138904643L;
+
 	public enum Status{
 		pending(0), enable(1);
 		private int status;
@@ -41,7 +47,7 @@ public class User {
 	private String email;
     private List<Role> roles;
     @DBRef
-    private List<Site> area;
+    private List<ManagedObject> area;
     @Transient
     private boolean showPassword = false;
     
@@ -59,7 +65,7 @@ public class User {
 		this.status = Status.enable;
 	}
 
-	public User(String username, String password, String email, List<Role> roles, List<Site> area) {
+	public User(String username, String password, String email, List<Role> roles, List<ManagedObject> area) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -137,11 +143,11 @@ public class User {
 		return hasRole(Role.AREA);
 	}
 
-	public List<Site> getArea() {
+	public List<ManagedObject> getArea() {
 		return area;
 	}
 
-	public void setArea(List<Site> area) {
+	public void setArea(List<ManagedObject> area) {
 		this.area = area;
 	}
 

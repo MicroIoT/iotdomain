@@ -1,6 +1,8 @@
 package top.microiot.dto;
 
-import top.microiot.domain.Favorite.Type;
+import javax.validation.constraints.NotEmpty;
+
+import top.microiot.domain.ManagedObject;
 
 /**
  * 收藏查询条件类。
@@ -8,8 +10,10 @@ import top.microiot.domain.Favorite.Type;
  * @author 曹新宇
  */
 public class FavoritePageInfo extends PageInfo {
+	@NotEmpty(message="domain id can't be empty")
+	private String domainId;
 	private String name;
-	private Type type;
+	private ManagedObject.Type type;
 
 	public FavoritePageInfo() {
 		super();
@@ -24,11 +28,19 @@ public class FavoritePageInfo extends PageInfo {
 		this.name = name;
 	}
 
-	public Type getType() {
+	public ManagedObject.Type getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(ManagedObject.Type type) {
 		this.type = type;
+	}
+
+	public String getDomainId() {
+		return domainId;
+	}
+
+	public void setDomainId(String domainId) {
+		this.domainId = domainId;
 	}
 }

@@ -2,6 +2,11 @@ package top.microiot.domain;
 
 import java.util.Set;
 
+/**
+ * 当前系统登录的websocket会话类。
+ *
+ * @author 曹新宇
+ */
 public class WebsocketSession {
 	private String username;
 	private Set<String> sessions;

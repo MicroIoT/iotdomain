@@ -2,6 +2,7 @@ package top.microiot.domain;
 
 import java.util.Map;
 
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,33 +11,40 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DataValue;
+import top.microiot.exception.ValueException;
 
 /**
  * 场地类。
  *
  * @author 曹新宇
  */
-@CompoundIndex(name = "name_pid_sid_idx", def = "{'name' : 1, 'parent' : 1, 'siteType' : 1}", unique = true)
+@CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'siteType' : 1}", unique = true)
 @Document
-public class Site extends NotifyObject {
+@TypeAlias("site")
+public class Site extends ManagedObject {
 	private String name;
 	@DBRef
-	private Site parent;
+	private ManagedObject location;
 	@DBRef
 	private SiteType siteType;
 	private Map<String, DataValue> attributes;
+	@DBRef
+	private Domain domain;
 	
 	public Site() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.setType(Type.SITE);
 	}
 
-	public Site(String name, Site parent, SiteType siteType, Map<String, DataValue> attributes) {
-		super();
+	public Site(String name, ManagedObject location, SiteType siteType, Map<String, DataValue> attributes) {
+		super(Type.SITE);
 		this.name = name;
-		this.parent = parent;
+		if(location instanceof Device)
+			throw new ValueException("illegal location type");
+		this.location = location;
 		this.siteType = siteType;
 		this.attributes = attributes;
+		this.domain = location.getMODomain();
 	}
 
 	public String getName() {
@@ -47,12 +55,12 @@ public class Site extends NotifyObject {
 		this.name = name;
 	}
 
-	public Site getParent() {
-		return parent;
+	public ManagedObject getLocation() {
+		return location;
 	}
 
-	public void setParent(Site parent) {
-		this.parent = parent;
+	public void setLocation(ManagedObject location) {
+		this.location = location;
 	}
 
 	public SiteType getSiteType() {
@@ -72,45 +80,44 @@ public class Site extends NotifyObject {
 	}
 	
 	public String getString() {
-		Site site = this;
+		ManagedObject area = this;
 		String origin = "";
 		String add;
 			
-		do {
+		while( !(area instanceof Domain)) {
+			Site site = (Site) area;
 			add = site.getName() + site.getSiteType().getName();
 			add += origin;
 			origin = add;
-			site = site.parent;
-		}while(site != null);
+			area = site.location;
+		}
 		
 		return origin;
 	}
 	
-	public boolean contain(Site b) {
-		String asite = this.getString();
-		String bsite = b.getString();
-		if(asite.length() > bsite.length()) {
-			if(asite.contains(bsite))
-				return true;
-			else
-				return false;
+	public String getFullString() {
+		ManagedObject area = this;
+		String origin = "";
+		String add;
+			
+		while( !(area instanceof Domain)) {
+			Site site = (Site) area;
+			add = site.getName() + site.getSiteType().getName();
+			add += origin;
+			origin = add;
+			area = site.location;
 		}
-		else {
-			if(bsite.contains(asite))
-				return true;
-			else
-				return false;
-		}	
-	}
-	
-	public boolean containIn(Site b) {
-		String asite = this.getString();
-		String bsite = b.getString();
 		
-		if(bsite.contains(asite))
-			return true;
-		else
-			return false;
+		Domain s = (Domain) area;
+		return s.getName() + origin;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 
 	@JsonIgnore
@@ -118,10 +125,5 @@ public class Site extends NotifyObject {
 	public Map<String, AttributeType> getAlarmTypes() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public String getType() {
-		return NotifyObject.SITE;
 	}
 }

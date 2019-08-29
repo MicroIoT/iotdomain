@@ -2,6 +2,7 @@ package top.microiot.domain;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,20 +17,19 @@ import top.microiot.domain.attribute.DataValue;
  */
 @JsonInclude(Include.NON_NULL)
 @Document
+@TypeAlias("event")
 public class Event extends Notification{
 	private String attribute;
 	private DataValue value; 
 	
 	public Event() {
 		super();
-		this.setType(Notification.EVENT);
 	}
 
-	public Event(NotifyObject notifyObject, String attribute, DataValue value, Date reportTime) {
+	public Event(ManagedObject notifyObject, String attribute, DataValue value, Date reportTime) {
 		super(notifyObject, reportTime);
 		this.attribute = attribute;
 		this.value = value;
-		this.setType(Notification.EVENT);
 	}
 
 	public String getAttribute() {

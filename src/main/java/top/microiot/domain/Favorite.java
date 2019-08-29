@@ -11,39 +11,38 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * 收藏类。
+ * 收藏类。收藏场地或设备，方便用户使用。
  *
  * @author 曹新宇
  */
-@CompoundIndex(name = "name_type_user_idx", def = "{'name' : 1, 'type' : 1, 'user': 1}", unique = true)
+@CompoundIndex(name = "name_type_user_idx", def = "{'name' : 1, 'user': 1}", unique = true)
 @Document
 public class Favorite {
-	public enum Type{
-		Device, Site
-	}
 	@Id
     private String id;
 	private String name;
-	private Type type;
-	private String favoriteId;
+	@DBRef
+	private ManagedObject mo;
 	@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
 	private Date time;
 	@DBRef(lazy=true)
 	@JsonIgnore
 	private User user;
+	@DBRef
+	private Domain domain;
 	
 	public Favorite() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Favorite(String name, Type type, String favoriteId, User user) {
+	public Favorite(String name, ManagedObject mo, User user, Domain domain) {
 		super();
 		this.name = name;
-		this.type = type;
-		this.favoriteId = favoriteId;
+		this.mo = mo;
 		this.time = new Date();
 		this.user = user;
+		this.domain = domain;
 	}
 
 	public String getId() {
@@ -62,20 +61,12 @@ public class Favorite {
 		this.name = name;
 	}
 
-	public Type getType() {
-		return type;
+	public ManagedObject getMo() {
+		return mo;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
-	}
-
-	public String getFavoriteId() {
-		return favoriteId;
-	}
-
-	public void setFavoriteId(String favoriteId) {
-		this.favoriteId = favoriteId;
+	public void setMo(ManagedObject mo) {
+		this.mo = mo;
 	}
 
 	public Date getTime() {
@@ -92,5 +83,13 @@ public class Favorite {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 }

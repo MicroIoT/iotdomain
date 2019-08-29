@@ -6,29 +6,30 @@ package top.microiot.dto;
  * @author 曹新宇
  */
 public class SitePageInfo extends PageInfo {
-	private String parentId;
-	private String siteName;
+	private String locationId;
+	private String name;
 	private String siteTypeId;
-
+	private String domainId;
+	
 	public SitePageInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getParentId() {
-		return parentId;
+	public String getLocationId() {
+		return locationId;
 	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
 	}
 
-	public String getSiteName() {
-		return siteName;
+	public String getName() {
+		return name;
 	}
 
-	public void setSiteName(String siteName) {
-		this.siteName = siteName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getSiteTypeId() {
@@ -39,5 +40,11 @@ public class SitePageInfo extends PageInfo {
 		this.siteTypeId = siteTypeId;
 	}
 
-	
+	public String getDomainId() {
+		return domainId;
+	}
+
+	public void setDomainId(String domainId) {
+		this.domainId = domainId;
+	}
 }

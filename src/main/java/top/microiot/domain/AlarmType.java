@@ -1,7 +1,7 @@
 package top.microiot.domain;
 
 /**
- * 系统预定义设备类型。
+ * 系统预定义的设备告警类型。
  *
  * @author 曹新宇
  */

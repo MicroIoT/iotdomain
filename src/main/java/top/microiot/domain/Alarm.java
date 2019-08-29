@@ -2,6 +2,7 @@ package top.microiot.domain;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,18 +17,17 @@ import top.microiot.domain.attribute.DataValue;
  */
 @JsonInclude(Include.NON_NULL)
 @Document
+@TypeAlias("alarm")
 public class Alarm  extends Notification{
 	private String alarmType;
 	private DataValue alarmInfo;
 	public Alarm() {
 		super();
-		this.setType(Notification.ALARM);
 	}
-	public Alarm(NotifyObject notifyObject, String alarmType, DataValue alarmInfo, Date reportTime) {
+	public Alarm(ManagedObject notifyObject, String alarmType, DataValue alarmInfo, Date reportTime) {
 		super(notifyObject, reportTime);
 		this.alarmType = alarmType;
 		this.alarmInfo = alarmInfo;
-		this.setType(Notification.ALARM);
 	}
 	public String getAlarmType() {
 		return alarmType;
