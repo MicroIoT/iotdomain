@@ -3,7 +3,6 @@ package top.microiot.dto;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 
 import top.microiot.domain.attribute.AttTypeInfo;
 import top.microiot.domain.attribute.ClassTypeDeviceInfo;
@@ -18,24 +17,20 @@ public class DeviceTypeInfo extends AttTypeInfo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DeviceTypeInfo(String domainId, ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos, Boolean isGroup) {
+	public DeviceTypeInfo(ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos, Boolean isGroup) {
 		super(info.getName(), info.getDataType(), info.getDescription(), false, null, info.getAdditional());
 		this.staticAttTypeInfo = staticAttTypeInfo;
 		this.alarmTypeInfos = alarmTypeInfos;
 		this.actionTypeInfos = actionTypeInfos;
 		this.isGroup = isGroup;
-		this.domainId = domainId;
 	}
-	public DeviceTypeInfo(String domainId, ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos) {
+	public DeviceTypeInfo(ClassTypeDeviceInfo info, List<? extends AttTypeInfo> staticAttTypeInfo, List<? extends AttTypeInfo> alarmTypeInfos, List<ActionTypeInfo> actionTypeInfos) {
 		super(info.getName(), info.getDataType(), info.getDescription(), false, null, info.getAdditional());
 		this.staticAttTypeInfo = staticAttTypeInfo;
 		this.alarmTypeInfos = alarmTypeInfos;
 		this.actionTypeInfos = actionTypeInfos;
 		this.isGroup = false;
-		this.domainId = domainId;
 	}
-	@NotEmpty(message="domain id can't be empty")
-	private String domainId;
 	@Valid
 	private List<? extends AttTypeInfo> staticAttTypeInfo;
 	@Valid
@@ -68,11 +63,4 @@ public class DeviceTypeInfo extends AttTypeInfo {
 	public void setGroup(boolean isGroup) {
 		this.isGroup = isGroup;
 	}
-	public String getDomainId() {
-		return domainId;
-	}
-	public void setDomainId(String domainId) {
-		this.domainId = domainId;
-	}
-	
 }

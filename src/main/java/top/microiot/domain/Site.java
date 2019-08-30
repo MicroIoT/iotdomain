@@ -44,7 +44,7 @@ public class Site extends ManagedObject {
 		this.location = location;
 		this.siteType = siteType;
 		this.attributes = attributes;
-		this.domain = location.getMODomain();
+		this.domain = siteType.getDomain();
 	}
 
 	public String getName() {

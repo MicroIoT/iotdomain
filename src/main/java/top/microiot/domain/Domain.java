@@ -49,7 +49,7 @@ public class Domain extends ManagedObject implements Serializable{
 
 	@Override
 	public String getString() {
-		return null;
+		return getName();
 	}
 	
 	@Override

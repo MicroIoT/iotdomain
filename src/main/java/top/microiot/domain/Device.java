@@ -47,7 +47,7 @@ public class Device extends ManagedObject{
 		this.location = location;
 		this.parent = null;
 		this.deviceAccount = deviceAccount;
-		this.domain = location.getMODomain();
+		this.domain = deviceType.getDomain();
 	}
 	
 	public Device getParent() {

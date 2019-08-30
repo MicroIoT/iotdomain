@@ -83,22 +83,5 @@ public abstract class ManagedObject {
 	
 	public abstract ManagedObject getLocation();
 	public abstract void setLocation(ManagedObject location);
-	protected Domain getMODomain() {
-		if(this instanceof Domain)
-			return (Domain) this;
-		else if(this instanceof Site) {
-			ManagedObject area = this;
-			while(!(area instanceof Domain)) {
-				Site site = (Site)area;
-				area = site.getLocation();
-			}
-			
-			return (Domain) area;
-		}
-		else {
-			Device device = (Device) this;
-			return device.getLocation().getMODomain();
-		}
-	}
 	public abstract Domain getDomain();
 }
