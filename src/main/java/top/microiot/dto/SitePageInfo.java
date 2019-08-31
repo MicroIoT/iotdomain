@@ -9,7 +9,6 @@ public class SitePageInfo extends PageInfo {
 	private String locationId;
 	private String name;
 	private String siteTypeId;
-	private String domainId;
 	
 	public SitePageInfo() {
 		super();
@@ -38,13 +37,5 @@ public class SitePageInfo extends PageInfo {
 
 	public void setSiteTypeId(String siteTypeId) {
 		this.siteTypeId = siteTypeId;
-	}
-
-	public String getDomainId() {
-		return domainId;
-	}
-
-	public void setDomainId(String domainId) {
-		this.domainId = domainId;
 	}
 }

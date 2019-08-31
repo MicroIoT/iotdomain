@@ -9,14 +9,14 @@ import javax.validation.constraints.NotEmpty;
  */
 public class FavoriteUpdateInfo {
 	@NotEmpty(message="favorite id can't be empty")
-	private String favoriteId;
+	private String id;
 	@NotEmpty(message="favorite name can't be empty")
 	private String newName;
-	public String getFavoriteId() {
-		return favoriteId;
+	public String getId() {
+		return id;
 	}
-	public void setFavoriteId(String favoriteId) {
-		this.favoriteId = favoriteId;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getNewName() {
 		return newName;

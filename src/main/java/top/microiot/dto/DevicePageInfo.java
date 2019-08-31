@@ -9,7 +9,6 @@ public class DevicePageInfo extends PageInfo {
 	private String locationId;
 	private String name;
 	private String deviceTypeId;
-	private String domainId;
 	
 	public DevicePageInfo() {
 		super();
@@ -38,13 +37,5 @@ public class DevicePageInfo extends PageInfo {
 
 	public void setDeviceTypeId(String deviceTypeId) {
 		this.deviceTypeId = deviceTypeId;
-	}
-
-	public String getDomainId() {
-		return domainId;
-	}
-
-	public void setDomainId(String domainId) {
-		this.domainId = domainId;
 	}
 }

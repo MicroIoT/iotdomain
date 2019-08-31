@@ -8,13 +8,12 @@ import top.microiot.exception.ValueException;
  * @author 曹新宇
  */
 public enum IoTObject {
-	domain("domain", "top.microiot.domain.Domain"), 
-	device("device", "top.microiot.domain.Device"), 
-	devicetype("devicetype", "top.microiot.domain.DeviceType"), 
-	site("site", "top.microiot.domain.Site"), 
-	sitetype("sitetype", "top.microiot.domain.SiteType"), 
-	event("event", "top.microiot.domain.Event"), 
-	alarm("alarm", "top.microiot.domain.Alarm");
+	device("devices", "top.microiot.domain.Device"), 
+	devicetype("devicetypes", "top.microiot.domain.DeviceType"), 
+	site("sites", "top.microiot.domain.Site"), 
+	sitetype("sitetypes", "top.microiot.domain.SiteType"), 
+	event("events", "top.microiot.domain.Event"), 
+	alarm("alarms", "top.microiot.domain.Alarm");
 	
 	private String name;
 	private String className;

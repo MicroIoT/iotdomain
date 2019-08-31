@@ -12,8 +12,6 @@ public class FavoriteInfo {
 	private String name;
 	@NotEmpty(message="id can't be empty")
 	private String id;
-	@NotEmpty(message="domain id can't be empty")
-	private String domainId;
 	
 	public String getName() {
 		return name;
@@ -26,11 +24,5 @@ public class FavoriteInfo {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getDomainId() {
-		return domainId;
-	}
-	public void setDomainId(String domainId) {
-		this.domainId = domainId;
 	}
 }
