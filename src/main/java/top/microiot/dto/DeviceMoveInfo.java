@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 public class DeviceMoveInfo {
 	@NotEmpty(message="device id can't be empty")
 	private String id;
+	@NotEmpty(message="location id can't be empty")
 	private String locationId;
 	public String getId() {
 		return id;
