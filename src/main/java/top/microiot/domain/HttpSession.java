@@ -10,8 +10,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * @author 曹新宇
  */
 public class HttpSession {
+	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
 	private String username;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Notification.NOTIFY_DATE_FORMAT, locale = "zh", timezone = "GMT+8")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT, locale = "zh", timezone = "GMT+8")
 	private Date lastRequest;
 	private String sessionId;
 	private boolean expired;

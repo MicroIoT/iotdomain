@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,33 +18,22 @@ import top.microiot.domain.attribute.AttributeType;
  *
  * @author 曹新宇
  */
+@CompoundIndex(name = "name", def = "{'name' : 1}", unique = true)
 @JsonInclude(Include.NON_NULL)
 @Document
-@TypeAlias("domain")
+@TypeAlias(ManagedObject.DOMAIN)
 public class Domain extends ManagedObject implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3158030198625660034L;
-	@Indexed(unique=true)
-	private String name;
 	
 	public Domain() {
 		super();
-		this.setType(Type.DOMAIN);
 	}
 
 	public Domain(String name) {
-		super(Type.DOMAIN);
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		super(name);
 	}
 
 	@Override

@@ -3,13 +3,13 @@ package top.microiot.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import top.microiot.domain.IoTObject;
+import top.microiot.domain.IoTQueryObject;
 
 public class DistinctInfo extends QueryPageInfo{
 	@NotEmpty(message="field can't be empty")
 	private String field;
 	@NotNull(message="return class can't be null")
-	private IoTObject returnClass;
+	private IoTQueryObject returnClass;
 	
 	public String getField() {
 		return field;
@@ -17,10 +17,10 @@ public class DistinctInfo extends QueryPageInfo{
 	public void setField(String field) {
 		this.field = field;
 	}
-	public IoTObject getReturnClass() {
+	public IoTQueryObject getReturnClass() {
 		return returnClass;
 	}
-	public void setReturnClass(IoTObject returnClass) {
+	public void setReturnClass(IoTQueryObject returnClass) {
 		this.returnClass = returnClass;
 	}
 }

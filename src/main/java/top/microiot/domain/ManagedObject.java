@@ -18,26 +18,26 @@ import top.microiot.domain.attribute.AttributeType;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ 
-	@Type(value = Device.class, name = "DEVICE"), 
-	@Type(value = Domain.class, name = "DOMAIN"),
-	@Type(value = Site.class, name ="SITE") })
-public abstract class ManagedObject {
-	public static enum Type {
-		DOMAIN, SITE, DEVICE;
-	}
+	@Type(value = Device.class, name = ManagedObject.DEVICE), 
+	@Type(value = Domain.class, name = ManagedObject.DOMAIN),
+	@Type(value = Site.class, name =ManagedObject.SITE) })
+public abstract class ManagedObject implements IoTObject {
+	public static final String DEVICE = "device";
+	public static final String DOMAIN = "domain";
+	public static final String SITE = "site";
 
 	@Id
     private String id;
-	private Type type;
+	private String name;
 	
 	public ManagedObject() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ManagedObject(Type type) {
+	public ManagedObject(String name) {
 		super();
-		this.type = type;
+		this.name = name;
 	}
 
 	public String getId() {
@@ -48,20 +48,18 @@ public abstract class ManagedObject {
 		this.id = id;
 	}
 
-	public Type getType() {
-		return type;
+	public String getName() {
+		return name;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@JsonIgnore
 	public abstract Map<String, AttributeType> getAlarmTypes();
 	public abstract String getString();
 	public abstract String getFullString();
-	public abstract String getName();
-	public abstract void setName(String name);
 	public boolean contain(ManagedObject mo) {
 		String asite = this.getFullString();
 		String bsite = mo.getFullString();
@@ -83,5 +81,4 @@ public abstract class ManagedObject {
 	
 	public abstract ManagedObject getLocation();
 	public abstract void setLocation(ManagedObject location);
-	public abstract Domain getDomain();
 }

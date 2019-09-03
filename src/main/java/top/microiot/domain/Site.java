@@ -20,9 +20,8 @@ import top.microiot.exception.ValueException;
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'siteType' : 1}", unique = true)
 @Document
-@TypeAlias("site")
+@TypeAlias(ManagedObject.SITE)
 public class Site extends ManagedObject {
-	private String name;
 	@DBRef
 	private ManagedObject location;
 	@DBRef
@@ -33,26 +32,16 @@ public class Site extends ManagedObject {
 	
 	public Site() {
 		super();
-		this.setType(Type.SITE);
 	}
 
 	public Site(String name, ManagedObject location, SiteType siteType, Map<String, DataValue> attributes) {
-		super(Type.SITE);
-		this.name = name;
+		super(name);
 		if(location instanceof Device)
 			throw new ValueException("illegal location type");
 		this.location = location;
 		this.siteType = siteType;
 		this.attributes = attributes;
 		this.domain = siteType.getDomain();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public ManagedObject getLocation() {

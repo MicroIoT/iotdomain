@@ -19,9 +19,8 @@ import top.microiot.domain.attribute.DataValue;
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'deviceType' : 1}", unique = true)
 @Document
-@TypeAlias("device")
+@TypeAlias(ManagedObject.DEVICE)
 public class Device extends ManagedObject{
-	private String name;
 	private boolean connected;
 	@DBRef
 	private DeviceType deviceType;
@@ -36,11 +35,9 @@ public class Device extends ManagedObject{
 	
 	public Device() {
 		super();
-		this.setType(Type.DEVICE);
 	}
 	public Device(String name, DeviceType deviceType, Map<String, DataValue> attributes, ManagedObject location, User deviceAccount) {
-		super(Type.DEVICE);
-		this.name = name;
+		super(name);
 		this.connected = false;
 		this.deviceType = deviceType;
 		this.attributes = attributes;
@@ -73,12 +70,6 @@ public class Device extends ManagedObject{
 	}
 	public void setDeviceAccount(User deviceAccount) {
 		this.deviceAccount = deviceAccount;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public ManagedObject getLocation() {
 		return location;
