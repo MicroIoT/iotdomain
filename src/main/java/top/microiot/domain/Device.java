@@ -2,7 +2,6 @@ package top.microiot.domain;
 
 import java.util.Map;
 
-import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,7 +18,6 @@ import top.microiot.domain.attribute.DataValue;
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'deviceType' : 1}", unique = true)
 @Document
-@TypeAlias(ManagedObject.DEVICE)
 public class Device extends ManagedObject{
 	private boolean connected;
 	@DBRef
@@ -37,7 +35,7 @@ public class Device extends ManagedObject{
 		super();
 	}
 	public Device(String name, DeviceType deviceType, Map<String, DataValue> attributes, ManagedObject location, User deviceAccount) {
-		super(name);
+		super(name, ManagedObject.DEVICE);
 		this.connected = false;
 		this.deviceType = deviceType;
 		this.attributes = attributes;

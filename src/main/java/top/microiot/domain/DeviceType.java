@@ -17,7 +17,7 @@ import top.microiot.domain.attribute.DeviceAttributeType;
  */
 @CompoundIndex(name = "name_domain_idx", def = "{'name' : 1, 'domain' : 1}", unique = true)
 @Document
-public class DeviceType {
+public class DeviceType implements IoTObject{
 	@Id
     private String id;
 	private String name;

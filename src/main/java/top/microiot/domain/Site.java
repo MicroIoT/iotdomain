@@ -2,7 +2,6 @@ package top.microiot.domain;
 
 import java.util.Map;
 
-import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,7 +19,6 @@ import top.microiot.exception.ValueException;
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'siteType' : 1}", unique = true)
 @Document
-@TypeAlias(ManagedObject.SITE)
 public class Site extends ManagedObject {
 	@DBRef
 	private ManagedObject location;
@@ -35,7 +33,7 @@ public class Site extends ManagedObject {
 	}
 
 	public Site(String name, ManagedObject location, SiteType siteType, Map<String, DataValue> attributes) {
-		super(name);
+		super(name, ManagedObject.SITE);
 		if(location instanceof Device)
 			throw new ValueException("illegal location type");
 		this.location = location;

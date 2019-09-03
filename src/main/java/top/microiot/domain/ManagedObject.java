@@ -29,15 +29,17 @@ public abstract class ManagedObject implements IoTObject {
 	@Id
     private String id;
 	private String name;
+	private String type;
 	
 	public ManagedObject() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ManagedObject(String name) {
+	public ManagedObject(String name, String type) {
 		super();
 		this.name = name;
+		this.type = type;
 	}
 
 	public String getId() {
@@ -54,6 +56,14 @@ public abstract class ManagedObject implements IoTObject {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@JsonIgnore

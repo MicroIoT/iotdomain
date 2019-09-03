@@ -3,7 +3,6 @@ package top.microiot.domain;
 import java.io.Serializable;
 import java.util.Map;
 
-import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,7 +20,6 @@ import top.microiot.domain.attribute.AttributeType;
 @CompoundIndex(name = "name", def = "{'name' : 1}", unique = true)
 @JsonInclude(Include.NON_NULL)
 @Document
-@TypeAlias(ManagedObject.DOMAIN)
 public class Domain extends ManagedObject implements Serializable{
 	/**
 	 * 
@@ -33,7 +31,7 @@ public class Domain extends ManagedObject implements Serializable{
 	}
 
 	public Domain(String name) {
-		super(name);
+		super(name, ManagedObject.DOMAIN);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import top.microiot.domain.attribute.AttributeType;
  */
 @CompoundIndex(name = "name_domain_idx", def = "{'name' : 1, 'domain' : 1}", unique = true)
 @Document
-public class SiteType {
+public class SiteType implements IoTObject{
 	@Id
 	private String id;
 	private String name;
