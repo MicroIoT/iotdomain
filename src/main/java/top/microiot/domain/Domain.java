@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import top.microiot.domain.attribute.AttributeType;
 
 /**
- * 领域类。领域是一组相关的场地类型，设备类型，场地和设备的集合。
+ * 领域类。领域是一组相关的场地类型，设备类型，场地和设备以及相关信息的集合。
  *
  * @author 曹新宇
  */

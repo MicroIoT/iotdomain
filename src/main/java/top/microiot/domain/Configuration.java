@@ -22,6 +22,8 @@ public class Configuration {
 	private User user;
 	@DBRef
 	private ManagedObject notifyObject;
+	@DBRef
+	private Domain domain;
 	private boolean silent;
 	private boolean top;
 	
@@ -33,6 +35,7 @@ public class Configuration {
 		super();
 		this.user = user;
 		this.notifyObject = notifyObject;
+		this.domain = notifyObject.getDomain();
 		this.silent = false;
 		this.top = false;
 	}
@@ -53,6 +56,12 @@ public class Configuration {
 	}
 	public void setNotifyObject(ManagedObject device) {
 		this.notifyObject = device;
+	}
+	public Domain getDomain() {
+		return domain;
+	}
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 	public boolean isSilent() {
 		return silent;
