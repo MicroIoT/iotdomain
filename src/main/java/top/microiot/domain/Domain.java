@@ -68,19 +68,4 @@ public class Domain extends ManagedObject implements Serializable{
 		// TODO Auto-generated method stub
 		return this;
 	}
-
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return getName().hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof Domain) {
-			Domain domain = (Domain) obj;
-			return domain.getId().equals(this.getId());
-		}
-		return false;
-	}
 }

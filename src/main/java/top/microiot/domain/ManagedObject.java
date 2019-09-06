@@ -91,4 +91,19 @@ public abstract class ManagedObject implements IoTObject {
 	
 	public abstract ManagedObject getLocation();
 	public abstract void setLocation(ManagedObject location);
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return getFullString().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof ManagedObject) {
+			ManagedObject object = (ManagedObject) obj;
+			return object.getId().equals(this.getId());
+		}
+		return false;
+	}
 }
