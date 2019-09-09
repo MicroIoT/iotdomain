@@ -26,8 +26,6 @@ public class Device extends ManagedObject{
 	@DBRef
 	private ManagedObject location;
 	@DBRef
-	private Device parent;
-	@DBRef
 	private Domain domain;
 	private User deviceAccount;
 	
@@ -40,17 +38,10 @@ public class Device extends ManagedObject{
 		this.deviceType = deviceType;
 		this.attributes = attributes;
 		this.location = location;
-		this.parent = null;
 		this.deviceAccount = deviceAccount;
 		this.domain = deviceType.getDomain();
 	}
 	
-	public Device getParent() {
-		return parent;
-	}
-	public void setParent(Device parent) {
-		this.parent = parent;
-	}
 	public DeviceType getDeviceType() {
 		return deviceType;
 	}
