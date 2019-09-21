@@ -6,5 +6,5 @@ package top.microiot.domain;
  * @author 曹新宇
  */
 public enum TopicType {
-	Alarm, Operation, Result, Unknow;
+	Alarm, Operation, Result, GET, SET, ACTION, Unknow;
 }

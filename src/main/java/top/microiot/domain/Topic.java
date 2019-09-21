@@ -9,7 +9,10 @@ public class Topic {
 	public static final String TOPIC_ALARM = "/topic/alarm.";
 	public static final String TOPIC_RESULT = "/topic/result.";
 	public static final String TOPIC_OPERATION = "/topic/operation.";
-
+	public static final String TOPIC_GET = "get";
+	public static final String TOPIC_SET = "set";
+	public static final String TOPIC_ACTION = "action";
+	
 	private String topic;
 	private TopicType type;
 	private String notifyObjectId;
@@ -56,6 +59,16 @@ public class Topic {
 			return TopicType.Unknow;
 	}
 	
+	public static TopicType getOperationType(String topic) {
+		if(topic.startsWith(TOPIC_OPERATION + TOPIC_GET))
+			return TopicType.GET;
+		else if(topic.startsWith(TOPIC_OPERATION + TOPIC_SET))
+			return TopicType.SET;
+		else if(topic.startsWith(TOPIC_OPERATION + TOPIC_ACTION))
+			return TopicType.ACTION;
+		else
+			return TopicType.Unknow;
+	}
 	private String getNotifyObjectId(String topic) {
 		String[] topics = topic.split("\\.");
 		
