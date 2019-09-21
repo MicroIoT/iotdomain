@@ -12,6 +12,9 @@ public class Topic {
 	public static final String TOPIC_GET = "get";
 	public static final String TOPIC_SET = "set";
 	public static final String TOPIC_ACTION = "action";
+	public static final String TOPIC_OPERATION_GET = "/topic/operation." + TOPIC_GET + ".";
+	public static final String TOPIC_OPERATION_SET = "/topic/operation." + TOPIC_SET + ".";
+	public static final String TOPIC_OPERATION_ACTION = "/topic/operation." + TOPIC_ACTION + ".";
 	
 	private String topic;
 	private TopicType type;
@@ -59,7 +62,7 @@ public class Topic {
 			return TopicType.Unknow;
 	}
 	
-	public static TopicType getOperationType(String topic) {
+	public TopicType getOperationType() {
 		if(topic.startsWith(TOPIC_OPERATION + TOPIC_GET))
 			return TopicType.GET;
 		else if(topic.startsWith(TOPIC_OPERATION + TOPIC_SET))
