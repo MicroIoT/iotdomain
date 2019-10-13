@@ -26,6 +26,7 @@ public class Configuration {
 	private Domain domain;
 	private boolean silent;
 	private boolean top;
+	private boolean subscribe;
 	
 	public Configuration() {
 		super();
@@ -74,5 +75,11 @@ public class Configuration {
 	}
 	public void setTop(boolean top) {
 		this.top = top;
+	}
+	public boolean isSubscribe() {
+		return subscribe;
+	}
+	public void setSubscribe(boolean subscribe) {
+		this.subscribe = subscribe;
 	}
 }

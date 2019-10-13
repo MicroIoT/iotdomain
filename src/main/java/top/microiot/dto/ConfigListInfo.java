@@ -8,6 +8,7 @@ package top.microiot.dto;
 public class ConfigListInfo {
 	private Boolean top;
 	private Boolean silent;
+	private Boolean subscribe;
 	
 	public Boolean getTop() {
 		return top;
@@ -20,5 +21,11 @@ public class ConfigListInfo {
 	}
 	public void setSilent(Boolean silent) {
 		this.silent = silent;
+	}
+	public Boolean getSubscribe() {
+		return subscribe;
+	}
+	public void setSubscribe(Boolean subscribe) {
+		this.subscribe = subscribe;
 	}
 }

@@ -23,7 +23,7 @@ public class AttributeValues {
 				AttributeType attType = attTypes.get(key);
 				if(!attType.isOptional() && (attValueInfos == null || !attValueInfos.containsKey(key))){
 					throw new NotFoundException("attribute: " + key);
-				}else if(attValueInfos.containsKey(key)){
+				}else if(attValueInfos != null && attValueInfos.containsKey(key)){
 					AttValueInfo value = attValueInfos.get(key);
 					if((value == null || value.isEmpty()) && attType.isOptional())
 						;
