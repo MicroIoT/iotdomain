@@ -26,7 +26,7 @@ public class StringType extends DataType {
 			this.max = null;
 		}else {
 			try{
-				if(infos.get(MIN).length() == 0) 
+				if(infos.get(MIN) == null || infos.get(MIN).length() == 0)
 					this.min = 0;
 				else
 					this.min = Integer.parseInt(infos.get(MIN));
@@ -34,7 +34,7 @@ public class StringType extends DataType {
 				throw new ValueException("invalid min definition");
 			}
 			try{
-				if(infos.get(MAX).length() == 0) 
+				if(infos.get(MAX) == null || infos.get(MAX).length() == 0)
 					this.max = 1024;
 				else
 					this.max = Integer.parseInt(infos.get(MAX));

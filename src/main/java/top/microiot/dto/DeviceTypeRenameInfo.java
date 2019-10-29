@@ -12,7 +12,6 @@ public class DeviceTypeRenameInfo {
 	private String id;
 	@NotEmpty(message="name can't be empty")
 	private String name;
-	private String description;
 	
 	public String getId() {
 		return id;
@@ -28,13 +27,5 @@ public class DeviceTypeRenameInfo {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }
