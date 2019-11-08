@@ -6,7 +6,7 @@ package top.microiot.domain;
  * @author 曹新宇
  */
 public class AlarmType {
-	public static final String DISCONNECTED = "失去长连接";
-	public static final String CONNECTED = "建立长连接";
+	public static final String DISCONNECTED_ALARM = "DisconnectedAlarm";
+	public static final String CONNECTED_ALARM = "ConnectedAlarm";
 	public static final String ATTRIBUTE_CHANGED_ALARM = "AttributeChangedAlarm";
 }
