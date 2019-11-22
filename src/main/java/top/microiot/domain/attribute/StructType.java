@@ -11,9 +11,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.NotFoundException;
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.STRUCT)
 public class StructType extends DataType{
 	private Map<String, AttributeType> attTypes;
 	

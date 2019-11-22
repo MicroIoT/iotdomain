@@ -1,7 +1,10 @@
 package top.microiot.domain.attribute;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.LOCATION)
 public class LocationType extends DataType {
 	public static final String SPLIT = ",";
 

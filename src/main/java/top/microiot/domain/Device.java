@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DataValue;
@@ -17,6 +18,7 @@ import top.microiot.domain.attribute.DataValue;
  * @author 曹新宇
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'deviceType' : 1}", unique = true)
+@JsonTypeName(ManagedObject.DEVICE)
 @Document
 public class Device extends ManagedObject{
 	private boolean connected;
@@ -33,7 +35,7 @@ public class Device extends ManagedObject{
 		super();
 	}
 	public Device(String name, DeviceType deviceType, Map<String, DataValue> attributes, ManagedObject location, User deviceAccount) {
-		super(name, ManagedObject.DEVICE);
+		super(name);
 		this.connected = false;
 		this.deviceType = deviceType;
 		this.attributes = attributes;

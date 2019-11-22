@@ -10,8 +10,11 @@ import java.util.Set;
 
 import org.springframework.core.ParameterizedTypeReference;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.ARRAY)
 public class ArrayType extends DataType {
 	public static final String TYPE = "array.type";
 	private DataType dataType;

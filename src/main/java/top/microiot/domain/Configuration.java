@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @CompoundIndex(name = "user_object_idx", def = "{'user' : 1, 'notifyObject' : 1}", unique = true)
 @Document
-public class Configuration {
+public class Configuration  implements IoTObject{
 	@Id
     private String id;
 	@DBRef(lazy=true)

@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import top.microiot.domain.attribute.AttributeType;
 import top.microiot.domain.attribute.DataValue;
@@ -18,6 +19,7 @@ import top.microiot.exception.ValueException;
  * @author 曹新宇
  */
 @CompoundIndex(name = "name_loc_type_idx", def = "{'name' : 1, 'location' : 1, 'siteType' : 1}", unique = true)
+@JsonTypeName(ManagedObject.SITE)
 @Document
 public class Site extends ManagedObject {
 	@DBRef
@@ -33,7 +35,7 @@ public class Site extends ManagedObject {
 	}
 
 	public Site(String name, ManagedObject location, SiteType siteType, Map<String, DataValue> attributes) {
-		super(name, ManagedObject.SITE);
+		super(name);
 		if(location instanceof Device)
 			throw new ValueException("illegal location type");
 		this.location = location;

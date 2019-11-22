@@ -1,7 +1,10 @@
 package top.microiot.domain.attribute;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.INT)
 public class IntType extends DataType {
 	public IntType() {
 		super(Type.Int);

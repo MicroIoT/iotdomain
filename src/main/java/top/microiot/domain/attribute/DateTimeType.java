@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.DATE)
 public class DateTimeType extends DataType {
 	public static final String FORMAT = "date.format";
 	private String format;

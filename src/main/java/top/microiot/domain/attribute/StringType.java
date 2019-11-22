@@ -2,8 +2,11 @@ package top.microiot.domain.attribute;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.STRING)
 public class StringType extends DataType {
 	public static final String MAX = "string.max";
 	public static final String MIN = "string.min";

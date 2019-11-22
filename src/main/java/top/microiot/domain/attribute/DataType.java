@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
@@ -14,21 +15,31 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ 
-	@Type(value = IntType.class, name = "Int"), 
-	@Type(value = DecimalType.class, name = "Decimal"),
-	@Type(value = StringType.class, name = "String"), 
-	@Type(value = BoolType.class, name = "Bool"),
-	@Type(value = EnumType.class, name = "Enum"), 
-	@Type(value = DateTimeType.class, name = "DateTime"),
-	@Type(value = LocationType.class, name = "Location"), 
-	@Type(value = StructType.class, name = "Struct"),
-	@Type(value = ArrayType.class, name = "Array"), 
-	@Type(value = ChoiceType.class, name = "Choice") })
+	@Type(value = IntType.class, name = DataType.INT), 
+	@Type(value = DecimalType.class, name = DataType.DECIMAL),
+	@Type(value = StringType.class, name = DataType.STRING), 
+	@Type(value = BoolType.class, name = DataType.BOOL),
+	@Type(value = EnumType.class, name = DataType.ENUM), 
+	@Type(value = DateTimeType.class, name = DataType.DATE),
+	@Type(value = LocationType.class, name = DataType.LOCATION), 
+	@Type(value = StructType.class, name = DataType.STRUCT),
+	@Type(value = ArrayType.class, name = DataType.ARRAY), 
+	@Type(value = ChoiceType.class, name = DataType.CHOICE) })
 public abstract class DataType {
+	public static final String CHOICE = "Choice";
+	public static final String ARRAY = "Array";
+	public static final String STRUCT = "Struct";
+	public static final String LOCATION = "Location";
+	public static final String DATE = "DateTime";
+	public static final String ENUM = "Enum";
+	public static final String BOOL = "Bool";
+	public static final String STRING = "String";
+	public static final String DECIMAL = "Decimal";
+	public static final String INT = "Int";
 	public enum Type {
 		Int, Decimal, String, Bool, Enum, DateTime, Location, Struct, Array, Choice, Class;
 	}
-
+	@JsonIgnore
 	private Type type;
 
 	public DataType(Type type) {

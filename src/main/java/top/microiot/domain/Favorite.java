@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @CompoundIndex(name = "name_type_user_idx", def = "{'name' : 1, 'user': 1}", unique = true)
 @Document
-public class Favorite {
+public class Favorite  implements IoTObject{
 	@Id
     private String id;
 	private String name;

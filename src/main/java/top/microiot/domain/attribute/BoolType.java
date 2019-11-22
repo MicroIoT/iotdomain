@@ -1,7 +1,10 @@
 package top.microiot.domain.attribute;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.BOOL)
 public class BoolType extends DataType {
 	public BoolType() {
 		super(Type.Bool);

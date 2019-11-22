@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.ENUM)
 public class EnumType extends DataType {
 	public static final String ENUM = "enum.value";
 	private List<String> enumType;

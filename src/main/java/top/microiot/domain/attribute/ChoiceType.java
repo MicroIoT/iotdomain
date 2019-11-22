@@ -7,8 +7,11 @@ import java.util.Set;
 
 import org.reflections.Reflections;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import top.microiot.exception.ValueException;
 
+@JsonTypeName(DataType.CHOICE)
 public class ChoiceType extends DataType {
 private Map<String, AttributeType> attTypes;
 	

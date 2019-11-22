@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import top.microiot.domain.attribute.AttributeType;
 
@@ -19,6 +20,7 @@ import top.microiot.domain.attribute.AttributeType;
  */
 @CompoundIndex(name = "name", def = "{'name' : 1}", unique = true)
 @JsonInclude(Include.NON_NULL)
+@JsonTypeName(ManagedObject.DOMAIN)
 @Document
 public class Domain extends ManagedObject implements Serializable{
 	/**
@@ -31,7 +33,7 @@ public class Domain extends ManagedObject implements Serializable{
 	}
 
 	public Domain(String name) {
-		super(name, ManagedObject.DOMAIN);
+		super(name);
 	}
 
 	@Override
