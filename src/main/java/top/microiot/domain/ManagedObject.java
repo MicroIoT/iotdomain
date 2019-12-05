@@ -16,7 +16,7 @@ import top.microiot.domain.attribute.AttributeType;
  *
  * @author 曹新宇
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
 @JsonSubTypes({ 
 	@Type(value = Device.class, name = ManagedObject.DEVICE), 
 	@Type(value = Domain.class, name = ManagedObject.DOMAIN),
@@ -29,6 +29,7 @@ public abstract class ManagedObject implements IoTObject {
 	@Id
     private String id;
 	private String name;
+	private String type = this.getClass().getSimpleName().toLowerCase();
 	
 	public ManagedObject() {
 		super();
@@ -54,6 +55,14 @@ public abstract class ManagedObject implements IoTObject {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@JsonIgnore

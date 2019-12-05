@@ -2,14 +2,17 @@ package top.microiot.domain;
 
 import java.util.Date;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import top.microiot.domain.attribute.DataType;
 import top.microiot.domain.attribute.DataValue;
 
 /**
@@ -95,5 +98,17 @@ public class Event implements IoTObject{
 
 	public void setValue(DataValue value) {
 		this.value = value;
+	}
+	@JsonIgnore
+	public Object getData(Class<?> type) {
+		Device device = (Device) this.notifyObject;
+		DataType dataType = device.getDeviceType().getAttDefinition().get(this.getAttribute()).getDataType();
+		return dataType.getData(getValue(), type);
+	}
+	@JsonIgnore
+	public Object getData(ParameterizedTypeReference<?> type) {
+		Device device = (Device) this.notifyObject;
+		DataType dataType = device.getDeviceType().getAttDefinition().get(this.getAttribute()).getDataType();
+		return dataType.getData(getValue(), type);
 	}
 }
