@@ -48,7 +48,7 @@ public class EnumType extends DataType {
 
 	@Override
 	public AttValueInfo getAttValue(Object object) {
-		if(object.getClass().isEnum() && enumType.contains(object.toString())) {
+		if(object.getClass().isEnum() && enumType.contains(((Enum<?>)object).name())) {
 			return new AttValueInfo(object.toString());
 		}
 		else

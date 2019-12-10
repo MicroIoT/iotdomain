@@ -6,16 +6,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ 
-	@Type(value = IntValue.class, name = "Int"), 
-	@Type(value = DecimalValue.class, name = "Decimal"),
-	@Type(value = StringValue.class, name = "String"), 
-	@Type(value = BoolValue.class, name = "Bool"),
-	@Type(value = EnumValue.class, name = "Enum"), 
-	@Type(value = DateTimeValue.class, name = "DateTime"),
-	@Type(value = LocationValue.class, name = "Location"), 
-	@Type(value = StructValue.class, name = "Struct"),
-	@Type(value = ArrayValue.class, name = "Array"), 
-	@Type(value = ChoiceValue.class, name = "Choice") })
+	@Type(value = IntValue.class, name = DataType.INT), 
+	@Type(value = DecimalValue.class, name = DataType.DECIMAL),
+	@Type(value = StringValue.class, name = DataType.STRING), 
+	@Type(value = BoolValue.class, name = DataType.BOOL),
+	@Type(value = EnumValue.class, name = DataType.ENUM), 
+	@Type(value = DateTimeValue.class, name = DataType.DATE),
+	@Type(value = LocationValue.class, name = DataType.LOCATION), 
+	@Type(value = StructValue.class, name = DataType.STRUCT),
+	@Type(value = ArrayValue.class, name = DataType.ARRAY), 
+	@Type(value = ChoiceValue.class, name = DataType.CHOICE) })
 public abstract class DataValue {
 	public abstract String getString();
 	public static DataValue getDataValue(AttValueInfo value, DataType type){
