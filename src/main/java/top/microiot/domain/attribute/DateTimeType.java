@@ -24,6 +24,11 @@ public class DateTimeType extends DataType {
 		this.format = format.get(FORMAT);
 	}
 
+	public DateTimeType(String format) {
+		super(Type.DateTime);
+		this.format = format;
+	}
+
 	public String getFormat() {
 		return format;
 	}
@@ -34,17 +39,23 @@ public class DateTimeType extends DataType {
 
 	@Override
 	public boolean isValid(AttValueInfo value) {
-		if(value.getValue() == null)
+		String date = value.getValue();
+		return isValid(date); 
+	}
+
+	public boolean isValid(String date) {
+		if(date == null)
 			return false;
 		SimpleDateFormat dateFormat = new SimpleDateFormat(format);  
 		try {
-			dateFormat.parse(value.getValue());
+			dateFormat.parse(date);
 			return true;
 		} catch (ParseException e) {
 			return false;
-		} 
+		}
 	}
 
+	
 	@Override
 	public AttValueInfo getAttValue(Object object) {
 		if(object instanceof Date) {
@@ -59,7 +70,11 @@ public class DateTimeType extends DataType {
 	@Override
 	public Object getData(DataValue value, Class<?> type) {
 		if(value instanceof DateTimeValue) {
-			return ((DateTimeValue)value).getValue();
+			try {
+				return ((DateTimeValue)value).getValue();
+			} catch (ParseException e) {
+				throw new ValueException("date value parse error: " + e.getMessage());
+			}
 		}
 		else
 			throw new ValueException("expected data value is DateTimeValue, but not " + value.getClass().getName());

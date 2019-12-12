@@ -4,11 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import top.microiot.exception.ValueException;
 
 public class DateTimeValue extends DataValue {
-	private Date value;
-	private DateTimeType dateTimeType;
+	private String date;
+	private String format;
 
 	public DateTimeValue() {
 		super();
@@ -18,29 +20,47 @@ public class DateTimeValue extends DataValue {
 	public DateTimeValue(AttValueInfo value, DateTimeType type)  {
 		if(!type.isValid(value))
 			throw new ValueException("invalid datetime value");
-		SimpleDateFormat dateFormat = new SimpleDateFormat(type.getFormat());  
-		try {
-			this.value = dateFormat.parse(value.getValue());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.dateTimeType = type;
+		
+		this.date = value.getValue();
+		this.format = type.getFormat();
 	}
 
-	public Date getValue() {
-		return value;
+	public DateTimeValue(String value, String format) {
+		DateTimeType type = new DateTimeType(format);
+		if(!type.isValid(value))
+			throw new ValueException("invalid datetime value");
+		
+		this.date = value;
+		this.format = format;
+	}
+	@JsonIgnore
+	public Date getValue() throws ParseException {
+		return new SimpleDateFormat(format).parse(date);
 	}
 
-	public void setValue(Date value) {
-		this.value = value;
+	public void setValue(String value) {
+		this.date = value;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
 	}
 
 	@Override
 	public String getString() {
-		SimpleDateFormat formatter;
-		formatter = new SimpleDateFormat(dateTimeType.getFormat());
-		return formatter.format(value);
+		return date;
 	}
 
 	
