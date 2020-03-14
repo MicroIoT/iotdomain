@@ -29,6 +29,8 @@ public class Device extends ManagedObject{
 	private ManagedObject location;
 	@DBRef
 	private Domain domain;
+	@DBRef
+	private Device gateway;
 	private User deviceAccount;
 	
 	public Device() {
@@ -41,6 +43,17 @@ public class Device extends ManagedObject{
 		this.attributes = attributes;
 		this.location = location;
 		this.deviceAccount = deviceAccount;
+		this.gateway = null;
+		this.domain = deviceType.getDomain();
+	}
+	public Device(String name, DeviceType deviceType, Map<String, DataValue> attributes, ManagedObject location, Device gateway) {
+		super(name);
+		this.connected = false;
+		this.deviceType = deviceType;
+		this.attributes = attributes;
+		this.location = location;
+		this.gateway = gateway;
+		this.deviceAccount = null;
 		this.domain = deviceType.getDomain();
 	}
 	
@@ -68,8 +81,17 @@ public class Device extends ManagedObject{
 	public void setLocation(ManagedObject location) {
 		this.location = location;
 	}
+	public Device getGateway() {
+		return gateway;
+	}
+	public void setGateway(Device gateway) {
+		this.gateway = gateway;
+	}
 	public boolean isConnected() {
-		return connected;
+		if(this.gateway == null)
+			return connected;
+		else
+			return this.gateway.connected;
 	}
 	public void setConnected(boolean connected) {
 		this.connected = connected;
